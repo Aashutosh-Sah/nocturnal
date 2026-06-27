@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;600;700;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Helvetica Neue", Arial, sans-serif;
+  
+  --color-nocturnal-bg: #050508;
+  --color-nocturnal-card: rgba(255, 255, 255, 0.05);
+  --color-nocturnal-border: rgba(255, 255, 255, 0.1);
+  --color-nocturnal-accent: #8B5CF6;
+  --color-nocturnal-blue: #0EA5E9;
+  --color-nocturnal-gold: #D4AF37;
+  --color-nocturnal-matte: #121214;
+}
+
+@layer base {
+  body {
+    @apply bg-nocturnal-bg text-white font-sans antialiased overflow-x-hidden selection:bg-nocturnal-accent selection:text-white;
+  }
+}
+
+@layer utilities {
+  .atmospheric-bg {
+    background: radial-gradient(circle at 70% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 40%);
+  }
+
+  .grid-overlay {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse at center, black, transparent);
+  }
+
+  .glass-card {
+    @apply bg-nocturnal-card backdrop-blur-md border border-nocturnal-border rounded-lg;
+  }
+  
+  .text-gradient {
+    background: linear-gradient(to bottom, #fff 50%, #555);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+  }
+  
+  .box-glow {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.15);
+  }
+  
+  .btn {
+    @apply px-8 py-4 rounded font-bold uppercase tracking-widest text-xs cursor-pointer transition-all duration-300 inline-flex items-center justify-center;
+  }
+
+  .btn-primary {
+    @apply bg-white text-nocturnal-bg hover:bg-gray-200 border-none;
+  }
+
+  .btn-outline {
+    @apply bg-transparent border border-white/20 text-white hover:bg-white/5 hover:border-white/50;
+  }
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
